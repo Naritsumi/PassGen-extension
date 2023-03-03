@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "PassGen: Free Password Generator",
+  "description": "Random Password Generator Tool",
+  "version": "1.0",
+  "action": {
+    "default_popup": "./popup/index.html",
+    "default_icon": "./images/asterisk.png"
+  }
+}
