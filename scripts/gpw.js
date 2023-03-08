@@ -29,19 +29,9 @@
    CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
    TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
-
-
-   http://www.goskyhawk.com/pwd/collection.html
-   https://stackoverflow.com/questions/19966005/human-speakable-password-generator-in-javascript
-   http://www.goskyhawk.com/pwd/gpw-multiple.html
  */
 
 var GPW = {
-
-/**
- * var pw = GPW.pronounceable(10);
- */
-
 pronounceable : function (pwl) {
 	var output = "";
 	var c1, c2, c3;
