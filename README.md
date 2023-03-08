@@ -1,6 +1,6 @@
 # PassGen: Password Generator Extension 🤖 ✨
 
-PassGen: Free Password Generator Tool avaible for Chrome
+PassGen: Free Password Generator Tool available for Chrome
 
 ## Add the extension
 
