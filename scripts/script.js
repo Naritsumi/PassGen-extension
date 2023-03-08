@@ -81,29 +81,17 @@ const copyPassword = () => {
 }
 
 const checkAllUpdate = () => {
-    document.getElementById("readable").checked = false;
     if (checkAll.checked) {
         document.getElementById("lowercase").checked = true;
         document.getElementById("uppercase").checked = true;
         document.getElementById("numbers").checked = true;
         document.getElementById("symbols").checked = true;
-        document.getElementById("readable").setAttribute("disabled", "disabled");
 
     } else {
         document.getElementById("lowercase").checked = false;
         document.getElementById("uppercase").checked = false;
         document.getElementById("numbers").checked = false;
         document.getElementById("symbols").checked = false;
-        document.getElementById("readable").removeAttribute("disabled");
-    }
-}
-
-const readableUpdate = () => {
-    document.getElementById("check-all").checked = false;
-    if (readable.checked) {
-        document.getElementById("check-all").setAttribute("disabled", "disabled");
-    } else {
-        document.getElementById("check-all").removeAttribute("disabled");
     }
 }
 
@@ -111,4 +99,3 @@ copyIcon.addEventListener("click", copyPassword);
 lengthSlider.addEventListener("input", updateSlider);
 generateBtn.addEventListener("click", generatePassword);
 checkAll.addEventListener("click", checkAllUpdate);
-readable.addEventListener("click", readableUpdate);
