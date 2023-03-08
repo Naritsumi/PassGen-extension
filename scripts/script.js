@@ -7,6 +7,8 @@ const generateBtn = document.querySelector(".generate-btn");
 const checkAll = document.getElementById("check-all");
 const readable = document.getElementById("readable");
 const uppercaseOption = document.getElementById("uppercase");
+const numbersOption = document.getElementById("numbers");
+const symbolsOption = document.getElementById("symbols");
 
 const characters = {
     lowercase: "abcdefghijklmnopqrstuvwxyz",
@@ -21,24 +23,41 @@ const generatePassword = () => {
     var randPassword = "",
         randomCapitaliseString = "";
 
-    options.forEach(option => {
-        if (option.checked) {
-            staticPassword += characters[option.id];
-        }
-    });
-
     if (readable.checked == true) {
-        randPassword = generateReadable(passLength);
+        randPassword = GPW.pronounceable(passLength);
         if (uppercaseOption.checked == true) {
-            randomCapitaliseString = [...randPassword[0]].map(c => Math.random() < .6 ? c : c.toUpperCase()).join('');
+            randomCapitaliseString = [...randPassword].map(c => Math.random() < .6 ? c : c.toUpperCase()).join('');
             randPassword = randomCapitaliseString;
         }
+        if (numbersOption.checked == true) {
+            randPassword = randPassword.substring(0, randPassword.length - 1);
+            randPassword += Math.floor(Math.random() * 10);
+        }
+        if (symbolsOption.checked == true) {    
+            if(hasNumbers(randPassword)){
+                var letr = randPassword.match(/[a-zA-Z]+/g);
+                var num = randPassword.match(/\d+/g);
+                randPassword = letr[0].substring(0, letr[0].length - 1) + num;
+            }
+            var rnum = Math.floor(Math.random() * characters["symbols"].length);
+            randPassword += characters["symbols"].substring(rnum,rnum+1);
+        }
     } else {
+        options.forEach(option => {
+            if (option.checked) {
+                staticPassword += characters[option.id];
+            }
+        });
         for (let i = 0; i < passLength; i++) {
             randPassword += new Array(passLength).fill(0).map(x => (function (chars) { let umax = Math.pow(2, 32), r = new Uint32Array(1), max = umax - (umax % chars.length); do { crypto.getRandomValues(r); } while (r[0] > max); return chars[r[0] % chars.length]; })(staticPassword)).join('');
         }
     }
     passwordInput.value = randPassword;
+}
+
+function hasNumbers(t) {
+    var regex = /\d/g;
+    return regex.test(t);
 }
 
 const updatePassIndicator = () => {
@@ -61,19 +80,6 @@ const copyPassword = () => {
     }, 1500);
 }
 
-function generateReadable(length) {
-    var minLength = 1;
-    var words = [];
-    var passwordLength = 0;
-
-    while (passwordLength < minLength) {
-        word = GPW.pronounceable(length);
-        passwordLength += word.length;
-        words.push(word);
-    }
-    return words;
-}
-
 const checkAllUpdate = () => {
     document.getElementById("readable").checked = false;
     if (checkAll.checked) {
@@ -94,16 +100,10 @@ const checkAllUpdate = () => {
 
 const readableUpdate = () => {
     document.getElementById("check-all").checked = false;
-    document.getElementById("numbers").checked = false;
-    document.getElementById("symbols").checked = false;
     if (readable.checked) {
         document.getElementById("check-all").setAttribute("disabled", "disabled");
-        document.getElementById("numbers").setAttribute("disabled", "disabled");
-        document.getElementById("symbols").setAttribute("disabled", "disabled");
     } else {
         document.getElementById("check-all").removeAttribute("disabled");
-        document.getElementById("numbers").removeAttribute("disabled");
-        document.getElementById("symbols").removeAttribute("disabled");
     }
 }
 
