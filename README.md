@@ -14,6 +14,7 @@ PassGen: Free Password Generator Tool available for Chrome
 * Generate readable passwords too! Inspired by [XKCD 936](http://xkcd.com/936/).
 * Customize your password lenght.
 * Easy to use.
+* Completely offline.
 
 ## License
 
