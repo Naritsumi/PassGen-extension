@@ -1,6 +1,11 @@
 # PassGen: Password Generator Extension 🤖 ✨
 
+<p align="center">
 PassGen: Free Password Generator Tool available for Chrome
+</p>
+<p align="center">
+  <img src="https://github.com/Naritsumi/PassGen-extension/blob/main/images/generator.png?raw=true" alt="Password Generator"/>
+</p>
 
 ## Add the extension
 
